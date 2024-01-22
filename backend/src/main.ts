@@ -16,7 +16,13 @@ app.get('/', (_req, res: Response) => {
 });
 
 export const server = app.listen(5000, () => {
-  console.log('Server listening on port 5000 ');
+  console.log('Server listening on port 5000');
+});
+
+process.on('SIGTERM', () => {
+  server.close(() => {
+    process.exit(0);
+  });
 });
 
 export default app;
