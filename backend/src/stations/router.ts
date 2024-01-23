@@ -4,5 +4,6 @@ import { stationController } from './controller';
 const stationsRouter = express.Router();
 
 stationsRouter.route('/count').get(stationController.getStationCount);
+stationsRouter.route('/').get(stationController.getStations);
 
 export { stationsRouter };
