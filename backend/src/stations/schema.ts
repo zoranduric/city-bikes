@@ -28,5 +28,14 @@ export const queryStationsSchema = z.object({
   take: number({ coerce: true }).positive().max(10),
 });
 
+export const stationDataSchema = z.object({
+  //stationName: z.string(),
+  total_starting_journeys: number({ coerce: true }).int().positive(),
+  total_journeys_ending: number({ coerce: true }).int().positive(),
+  average_distance: number({ coerce: true }).positive(),
+  average_duration_starting: number({ coerce: true }).positive(),
+});
+
 export type StationCount = z.infer<typeof stationCountSchema>;
 export type Stations = z.infer<typeof stationsSchema>;
+export type StationData = z.infer<typeof stationDataSchema>;
