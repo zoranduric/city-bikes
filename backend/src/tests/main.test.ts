@@ -1,7 +1,7 @@
 import { afterAll, describe, expect, test } from 'vitest';
 import supertest from 'supertest';
-import { createDatabasePool } from '../src/db';
-import app, { server } from '../src/main';
+import { createDatabasePool } from '../db';
+import app, { server } from '../main';
 
 describe('Server tests', () => {
   afterAll(() => {
