@@ -1,7 +1,7 @@
 import { afterAll, describe, expect, test } from 'vitest';
 import supertest from 'supertest';
 import app, { server } from '../main';
-import { Stations } from '../stations/schema';
+import { StationData, Stations } from '../stations/schema';
 
 describe('Station tests', () => {
   afterAll(() => {
@@ -21,5 +21,10 @@ describe('Station tests', () => {
   test('Return an error when incorrect query parameters are provided', async () => {
     const response = await supertest(app).get('/stations').query({ skip: 0, take: 11 });
     expect(response.status).toBe(400);
+  });
+  test('Fetch data for a single station and ensure the response is valid', async () => {
+    const response = await supertest(app).get('/stations/40');
+    expect(response.status).toBe(200);
+    expect(response.body as StationData);
   });
 });
