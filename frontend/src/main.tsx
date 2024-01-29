@@ -9,8 +9,13 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { paginationLoader, stationsLoader } from './dataLoaders/loader.ts';
+import {
+  stationLoader,
+  paginationLoader,
+  stationsLoader,
+} from './dataLoaders/loader.ts';
 import Stations from './stations/Stations.tsx';
+import Station from './station/Station.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +27,7 @@ const router = createBrowserRouter(
         element={<Stations />}
         loader={stationsLoader}
       />
+      <Route path='station/:id' element={<Station />} loader={stationLoader} />
     </Route>
   )
 );

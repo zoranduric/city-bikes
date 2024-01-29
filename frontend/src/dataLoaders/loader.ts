@@ -18,3 +18,11 @@ export const paginationLoader = async (): Promise<number> => {
   const count = await response.json();
   return count;
 };
+export const stationLoader = async ({
+  params,
+}: LoaderFunctionArgs): Promise<StationDataType> => {
+  const response = await fetch(`http://localhost:5000/stations/${params.id}`);
+  if (!response.ok) throw new Error('Failed to load station data');
+  const station = await response.json();
+  return station;
+};

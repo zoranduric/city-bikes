@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import ReturnButton from '../buttons/ReturnButton';
 
 const Pagination = ({ stationsCount }: { stationsCount: number }) => {
   const router = useNavigate();
@@ -13,7 +14,7 @@ const Pagination = ({ stationsCount }: { stationsCount: number }) => {
     const pageNumber = event.target.value;
     router(`${pageNumber}`);
   };
-  const paginationFormn = (
+  const paginationForm = (
     <>
       <label htmlFor='page'>Page: </label>
 
@@ -30,7 +31,7 @@ const Pagination = ({ stationsCount }: { stationsCount: number }) => {
     </>
   );
 
-  return <>{isNaN(currentPage) ? <p>nan</p> : paginationFormn}</>;
+  return <>{isNaN(currentPage) ? <ReturnButton /> : paginationForm}</>;
 };
 
 export default Pagination;

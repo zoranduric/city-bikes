@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Stations = () => {
   const stations = useLoaderData() as StationType[];
@@ -26,7 +26,17 @@ const Stations = () => {
               {stations.map((station, index) => (
                 <tr key={index}>
                   <td>{station.id}</td>
-                  <td>{station.station_name}</td>
+                  <td>
+                    <Link
+                      state={{
+                        stationName: station.station_name,
+                        stationAddress: station.station_address,
+                      }}
+                      to={`/station/${station.id}`}
+                    >
+                      {station.station_name}
+                    </Link>{' '}
+                  </td>
                   <td>{station.station_address}</td>
                   <td>{station.coordinate_x.substring(0, 10)}</td>
                   <td>{station.coordinate_y.substring(0, 10)}</td>
