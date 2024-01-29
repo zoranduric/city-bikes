@@ -9,12 +9,12 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { stationsLoader } from './dataLoaders/loader.ts';
+import { paginationLoader, stationsLoader } from './dataLoaders/loader.ts';
 import Stations from './stations/Stations.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<App />}>
+    <Route path='/' element={<App />} loader={paginationLoader}>
       <Route path='/' element={<Navigate to='/1' />} />
 
       <Route

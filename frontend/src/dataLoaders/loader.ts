@@ -12,3 +12,9 @@ export const stationsLoader = async ({
   const stations = await response.json();
   return stations;
 };
+export const paginationLoader = async (): Promise<number> => {
+  const response = await fetch('http://localhost:5000/stations/count');
+  if (!response.ok) throw new Error('Failed to fetch station count');
+  const count = await response.json();
+  return count;
+};
